@@ -2,7 +2,6 @@
 # Как это нужно сделать:
 # Нужно чтобы это не было похоже на спам, никаких призывов вступить, выбирать только проверенные сообщества, где за это не банят админы.
 
-
 # Импорт библиотек
 import requests
 import lxml.html
@@ -11,17 +10,13 @@ import time
 import sys
 exec("from {} import *".format(sys.argv[1]))
 
-
 # Общие параметры
-
 timesleep = 0 # Тайминг между проверками кода
 version = 5.101 # Текущая версия
 
-
 # Функции
-
 def comment(group, post, message, attachments):
-	'Размещение комментария с 2 рандомными фотограффиями из списка картинок. По очереди: id группы, id поста, сообщение'
+	'''Размещение комментария с 2 рандомными фотограффиями из списка картинок. По очереди: id группы, id поста, сообщение'''
 
 	k1 = {
 		'v':version,
@@ -35,8 +30,9 @@ def comment(group, post, message, attachments):
 
 	return requests.post('https://api.vk.com/method/wall.createComment', data = k1)
 
+
 def get_last_id(group):
-	'Получает id последнего поста в группе.'
+	'''Возвращает id последнего поста в группе.'''
 
 	try:	
 		html = requests.get("https://vk.com/public"+str(group)[1:])
@@ -57,8 +53,6 @@ def get_last_id(group):
 		print("Ошибка в получении последнего id в группе")
 
 
-
-# Основная программа
 def main():
 	n = 1 # Номер комментария
 
