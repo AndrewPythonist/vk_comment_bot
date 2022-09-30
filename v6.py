@@ -23,7 +23,7 @@ def comment(group, post, message, attachments=None):
         'access_token': group_token,
         'owner_id': group,
         'post_id': post,
-        'from_group': mygroup,
+        'from_group': mygroup_id,
         'message': message,
         'attachments': attachments
         }
